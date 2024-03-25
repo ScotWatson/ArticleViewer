@@ -13,6 +13,10 @@ const loadInterface = loadWindow.then(function () {
 
 Promise.all( [ loadInterface ] ).then(start, fail);
 
+function fail() {
+  console.log("Fail");
+}
+
 const DOM_PARSER = new DOMParser();
 const XML_SERIALIZER = new XMLSerializer();
 
