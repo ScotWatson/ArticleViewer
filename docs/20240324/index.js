@@ -8,7 +8,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 const initPageTime = performance.now();
 
 const loadInterface = loadWindow.then(function () {
-  return import("https://scotwatson.github.io/WebInterface/interface.mjs");
+  return import("https://scotwatson.github.io/WebInterface/20240316/interface.mjs");
 });
 
 Promise.all( [ loadInterface ] ).then(start, fail);
