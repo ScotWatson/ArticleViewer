@@ -11,20 +11,49 @@ const loadInterface = loadWindow.then(function () {
   return import("https://scotwatson.github.io/WebInterface/interface.mjs");
 });
 
-const loadMessaging = loadWindow.then(function () {
-  return import("https://scotwatson.github.io/WebInterface/JsMessaging.mjs");
-});
+Promise.all( [ loadInterface ] ).then(start, fail);
 
-Promise.all( [ loadInterface, loadMessaging ] ).then(start, fail);
+const DOM_PARSER = new DOMParser();
+const XML_SERIALIZER = new XMLSerializer();
 
-function start([ Interface, Messaging ]) {
+function start([ Interface ]) {
   try {
     const BODY = Interface.createBodyObject();
-    const webInterfaceIframe = document.createElement("iframe");
-    webInterfaceIframe.style.visibility = "hidden";
-    webInterfaceIframe.src = "https://scotwatson.github.io/WebInterface/index.html";
-    webInterfaceIframe.contentWindow;
-    document.body.appendChild(webInterfaceIframe);
+    const articleWindow = BODY.createAttached({
+      objectId: Interface.OBJECT_HTML;
+    });
+    addSection();
+    function newArticle() {
+      const xmlDoc = document.implementation.createDocument(null, "article");
+      const obj = {};
+      obj.createSection() {
+        const element = xmlDoc.createElement("section");
+      }
+      xmlDoc.createElement("link");
+      xmlDoc.createElement("paragraph");
+      return obj;
+    }
+    function open({
+      blob,
+    }) {
+      const xmlDoc = DOM_PARSER.parseFromString({ type: "application/xml" });
+    }
+    function save({
+      xml,
+    }) {
+      
+    }
+    
+    function addSection() {
+      const divSection = document.createElement("div");
+      const divHeader = document.createElement("div");
+      divSection.appendChild(divHeader);
+      const divText = document.createElement("div");
+      divSection.appendChild(divText);
+      divHeader.contentEditable = true;
+      divText.contentEditable = true;
+      articleWindow.appendChild(divSection);
+    }
   } catch (e) {
     console.error(e);
   }
