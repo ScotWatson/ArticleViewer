@@ -22,7 +22,7 @@ const XML_SERIALIZER = new XMLSerializer();
 
 function start([ Interface ]) {
   try {
-    const BODY = Interface.createBodyObject();
+    const BODY = Interface.createBodyObject({});
     const articleWindow = BODY.createAttached({
       objectId: Interface.OBJECT_HTML,
     });
