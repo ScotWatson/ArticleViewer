@@ -25,6 +25,7 @@ function start([ Interface ]) {
     const BODY = Interface.createBodyObject({});
     const articleWindow = BODY.createAttached({
       objectId: Interface.OBJECT_HTML,
+      parameters: {},
     });
     addSection();
     function newArticle() {
