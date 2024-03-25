@@ -26,7 +26,7 @@ function start([ Interface ]) {
     function newArticle() {
       const xmlDoc = document.implementation.createDocument(null, "article");
       const obj = {};
-      obj.createSection() {
+      obj.createSection = function () {
         const element = xmlDoc.createElement("section");
       }
       xmlDoc.createElement("link");
