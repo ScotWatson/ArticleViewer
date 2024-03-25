@@ -20,7 +20,7 @@ function start([ Interface ]) {
   try {
     const BODY = Interface.createBodyObject();
     const articleWindow = BODY.createAttached({
-      objectId: Interface.OBJECT_HTML;
+      objectId: Interface.OBJECT_HTML,
     });
     addSection();
     function newArticle() {
