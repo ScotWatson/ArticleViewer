@@ -5,25 +5,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 "use strict";
 
-// Start listening for messages from service worker
-window.navigator.serviceWorker.addEventListener("message", function (evt) {
-  console.log(evt.data);
-});
-window.navigator.serviceWorker.startMessages();
-
 const initPageTime = performance.now();
 
 const loadInterface = loadWindow.then(function () {
-  return import("./interface.mjs");
+  return import("https://scotwatson.github.io/WebInterface/interface.mjs");
 });
 
 const loadMessaging = loadWindow.then(function () {
-  return import("./messaging.mjs");
+  return import("https://scotwatson.github.io/WebInterface/JsMessaging.mjs");
 });
 
-Promise.all( [ loadInterface ] ).then(start, fail);
+Promise.all( [ loadInterface, loadMessaging ] ).then(start, fail);
 
-function start([ Interface ]) {
+function start([ Interface, Messaging ]) {
   try {
     const BODY = Interface.createBodyObject();
     const webInterfaceIframe = document.createElement("iframe");
